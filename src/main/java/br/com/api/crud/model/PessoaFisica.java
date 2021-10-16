@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USUARIO")
-public class Usuario {
+@Table(name = "PESSOA_FISICA")
+public class PessoaFisica {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,18 @@ public class Usuario {
 	@Column(nullable = false)
 	private String email;
 	
+	@Deprecated
+	public PessoaFisica() {
+
+	}
 	
+	public PessoaFisica(String nome, String cpf, String email) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.email = email;
+	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -74,7 +85,7 @@ public class Usuario {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		PessoaFisica other = (PessoaFisica) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
