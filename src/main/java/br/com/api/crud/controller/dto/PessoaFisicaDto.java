@@ -9,13 +9,16 @@ public class PessoaFisicaDto {
 	private String cpf;
 	private String email;
 	
+	public PessoaFisicaDto() {
+		
+	}
 	
-//	public PessoaFisicaDto(PessoaFisica pessoaFisica) {
-//		this.id = pessoaFisica.getId();
-//		this.nome = pessoaFisica.getNome();
-//		this.cpf = pessoaFisica.getCpf();
-//		this.email = pessoaFisica.getEmail();
-//	}
+	public PessoaFisicaDto(PessoaFisica pessoaFisica) {
+		this.id = pessoaFisica.getId();
+		this.nome = pessoaFisica.getNome();
+		this.cpf = pessoaFisica.getCpf();
+		this.email = pessoaFisica.getEmail();
+	}
 
 	public Long getId() {
 		return id;
@@ -32,10 +35,13 @@ public class PessoaFisicaDto {
 	public String getEmail() {
 		return email;
 	}
+	
+//	public static List<PessoaFisicaDto> converter(List<PessoaFisica> pessoas) {
+//		return pessoas.stream().map(PessoaFisicaDto::new).collect(Collectors.toList());
+//	}
 
 	public PessoaFisica toModel() {
 		PessoaFisica pessoaFisica = new PessoaFisica(nome, cpf, email);
-		pessoaFisica.setNome(this.nome);
 		return pessoaFisica;
 	}
 
