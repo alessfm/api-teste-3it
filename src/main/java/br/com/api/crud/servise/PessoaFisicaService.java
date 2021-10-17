@@ -45,8 +45,10 @@ public class PessoaFisicaService {
 		pessoaSalva.setNome(pessoaFisicaDto.getNome());
 		pessoaSalva.setCpf(pessoaFisicaDto.getCpf());
 		
-         pessoaFisicaRepository.save(pessoaSalva);
-		return null;
+		pessoaFisicaRepository.save(pessoaSalva);
+		return pessoaFisicaDto;
+	
+		
 	}
 	
 	
