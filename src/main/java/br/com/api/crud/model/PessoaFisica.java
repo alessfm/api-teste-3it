@@ -2,10 +2,17 @@ package br.com.api.crud.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "PESSOA_FISICA")
@@ -15,26 +22,47 @@ public class PessoaFisica {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	
+	@NotBlank
 	@Column(nullable = false)
 	private String nome;
 	
-	@Column(nullable = false)
+	@CPF @NotBlank
+	@Column(name = "CPF", unique = true)
 	private String cpf;
 	
-	@Column(nullable = false)
+	@Email @NotBlank
+	@Column(name = "EMAIL", unique = true)
 	private String email;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "cidade_id", updatable = false)
+	private Cidade cidade;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "estado_id")
+	private Estado estado;
+	
+	
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+
 	@Deprecated
 	public PessoaFisica() {
 
 	}
 	
-	public PessoaFisica(String nome, String cpf, String email) {
+	public PessoaFisica(String nome, String cpf, String email, Cidade cidade) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
+		this.cidade = cidade;
 	}
+
 
 
 	public Long getId() {
@@ -67,6 +95,15 @@ public class PessoaFisica {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
 	@Override

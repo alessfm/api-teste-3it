@@ -2,25 +2,43 @@ package br.com.api.crud.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "municipio")
 public class Cidade {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	private Integer codigo;
+
 	@Column(nullable = false)
 	private String nome;
-	
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private Estado estado;
+
+	private String uf;
+
+
+
+	@Deprecated
+	public Cidade() {
+
+	}
+
+	public Cidade(Long id, Integer codigo, String nome, String uf) {
+		super();
+		this.id = id;
+		this.codigo = codigo;
+		this.nome = nome;
+		this.uf = uf;
+	}
 
 	public Long getId() {
 		return id;
@@ -28,6 +46,14 @@ public class Cidade {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNome() {
@@ -38,39 +64,14 @@ public class Cidade {
 		this.nome = nome;
 	}
 
-	public Estado getEstado() {
-		return estado;
+	public String getUf() {
+		return uf;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setUf(String uf) {
+		this.uf = uf;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cidade other = (Cidade) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-	
-	
-	
+
 }

@@ -8,13 +8,64 @@ import javax.persistence.Id;
 
 @Entity
 public class Estado {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(nullable = false)
 	private String nome;
+	
+	@Column(name = "codigo_uf")
+	private Integer codigoUf;
+	
+	private String uf;
+	
+	private String regiao;
+	
+	@Deprecated
+	public Estado() {
+		
+	}
+	
+	
+	public Estado(Long id, String nome, Integer codigoUf, String uf, String regiao) {
+		this.id = id;
+		this.nome = nome;
+		this.codigoUf = codigoUf;
+		this.uf = uf;
+		this.regiao = regiao;
+	}
+
+	public Integer getCodigoUf() {
+		return codigoUf;
+	}
+
+	public void setCodigoUf(Integer codigoUf) {
+		this.codigoUf = codigoUf;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public String getRegiao() {
+		return regiao;
+	}
+
+	public void setRegiao(String regiao) {
+		this.regiao = regiao;
+	}
+
+	public Estado(String nome) {
+		this.nome = nome;
+	}
+
+
 
 	public Long getId() {
 		return id;

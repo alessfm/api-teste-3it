@@ -8,6 +8,8 @@ public class PessoaFisicaDto {
 	private String nome;
 	private String cpf;
 	private String email;
+	private CidadeDto cidade;
+	private EstadoDto estado;
 	
 	public PessoaFisicaDto() {
 		
@@ -18,6 +20,9 @@ public class PessoaFisicaDto {
 		this.nome = pessoaFisica.getNome();
 		this.cpf = pessoaFisica.getCpf();
 		this.email = pessoaFisica.getEmail();
+		this.cidade = new CidadeDto(pessoaFisica.getCidade());
+		this.estado = new EstadoDto(pessoaFisica.getEstado());
+		
 	}
 
 	public Long getId() {
@@ -36,14 +41,29 @@ public class PessoaFisicaDto {
 		return email;
 	}
 	
-//	public static List<PessoaFisicaDto> converter(List<PessoaFisica> pessoas) {
-//		return pessoas.stream().map(PessoaFisicaDto::new).collect(Collectors.toList());
-//	}
+
+	public CidadeDto getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(CidadeDto cidade) {
+		this.cidade = cidade;
+	}
+
+	
+	public EstadoDto getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoDto estado) {
+		this.estado = estado;
+	}
 
 	public PessoaFisica toModel() {
-		PessoaFisica pessoaFisica = new PessoaFisica(nome, cpf, email);
+		PessoaFisica pessoaFisica = new PessoaFisica(nome, cpf, email,  cidade.toModel());
 		return pessoaFisica;
 	}
+
 
 }
 
