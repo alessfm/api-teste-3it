@@ -29,7 +29,6 @@ import br.com.api.crud.service.PessoaFisicaService;
 @RequestMapping("/pessoas")
 public class PessoaFisicaController {
 
-
 	@Autowired
 	private PessoaFisicaService pessoaFisicaService;
 
@@ -49,14 +48,14 @@ public class PessoaFisicaController {
 	@GetMapping("/{id}")
 	@Transactional
 	public PessoaFisicaDto findById(@PathVariable("id") Long pessoaId) {
-		
+
 		return new PessoaFisicaDto(pessoaFisicaService.findById(pessoaId));
 	}
-	
+
 	@GetMapping("/{id}/cidade")
 	@Transactional
 	public CidadeDto getCidadeByPessoaId(@PathVariable("id") Long pessoaId) {
-		
+
 		return new CidadeDto(pessoaFisicaService.getCidadeByPessoaId(pessoaId));
 	}
 
@@ -66,35 +65,28 @@ public class PessoaFisicaController {
 		return new EstadoDto(pessoaFisicaService.getEstadoByPessoaId(pessoaId));
 	}
 
-	
 	@PutMapping("/{id}")
 	@Transactional
-	public ResponseEntity<PessoaFisicaDto> update(@PathVariable("id") Long pessoaId, @RequestBody PessoaFisicaDto pessoaFisicaDto) {
+	public ResponseEntity<PessoaFisicaDto> update(@PathVariable("id") Long pessoaId,
+			@RequestBody PessoaFisicaDto pessoaFisicaDto) {
 		PessoaFisica pessoaAtual = pessoaFisicaService.findById(pessoaId);
-		
-		if(pessoaAtual != null) {
+
+		if (pessoaAtual != null) {
 			BeanUtils.copyProperties(pessoaFisicaDto, pessoaAtual, "id", "cidade", "estado");
-			
+
 			pessoaAtual = pessoaFisicaService.update(pessoaId, pessoaAtual);
 			PessoaFisicaDto pessoaFisicaAtualizada = new PessoaFisicaDto(pessoaAtual);
 			return ResponseEntity.ok(pessoaFisicaAtualizada);
 		}
-		
+
 		return ResponseEntity.notFound().build();
 	}
 
-	
-	
 	@DeleteMapping("/{id}")
 	@Transactional
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		pessoaFisicaService.delete(id);
 	}
-	
-//	@PostMapping
-//	@RequestMapping("/{usuarioId}/")
-//	@Transactional
-//
-//
-	}
+
+}
