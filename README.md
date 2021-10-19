@@ -1,10 +1,8 @@
-#API REST WebService - Pessoas, Estado e Cidade - Copyright © 3IT
+# Teste Front-End - 3IT
 
-## Desafio
+## Criar uma aplicação com Angular 7.3 e integrar com a API
 
-### Criar uma aplicação com Angular 7.3 e integrar com a API
-
-#### Requisitos: [Node.js 8.11.3](https://nodejs.org/) e Angular Core 7.3v
+### Requisitos: [Node.js 8.11.3](https://nodejs.org/) e Angular Core 7.3v
 
 1. Lista de pessoas cadastradas
 
