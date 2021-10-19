@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import br.com.api.crud.controller.dto.PessoaFisicaDto;
+import br.com.api.crud.exception.PessoaNotFoundException;
 import br.com.api.crud.model.Cidade;
 import br.com.api.crud.model.Estado;
 import br.com.api.crud.model.PessoaFisica;
@@ -14,6 +15,8 @@ import br.com.api.crud.repository.PessoaFisicaRepository;
 @Service
 public class PessoaFisicaService {
 
+	
+	
 	private PessoaFisicaRepository pessoaFisicaRepository;
 
 	public PessoaFisicaService(PessoaFisicaRepository pessoaFisicaRepository) {
@@ -37,7 +40,7 @@ public class PessoaFisicaService {
 	}
 
 	public PessoaFisica findById(Long id) {
-		return pessoaFisicaRepository.findById(id).get();
+		return verifyAndGetIfExists(id);
 
 	}
 
@@ -47,15 +50,24 @@ public class PessoaFisicaService {
 	}
 
 	public void delete(Long id) {
+		verifyAndGetIfExists(id);
 		pessoaFisicaRepository.deleteById(id);
 	}
 
 	public Cidade getCidadeByPessoaId(Long pessoaId) {
+		verifyAndGetIfExists(pessoaId);
 		return pessoaFisicaRepository.findCidadeById(pessoaId);
 	}
 
 	public Estado getEstadoByPessoaId(Long pessoaId) {
+		verifyAndGetIfExists(pessoaId);
 		return pessoaFisicaRepository.findEstadoByPessoaId(pessoaId);
 	}
+	
+    public PessoaFisica verifyAndGetIfExists(Long id) {
+    	PessoaFisica pessoaEncontrada = pessoaFisicaRepository.findById(id)
+                .orElseThrow(() -> new PessoaNotFoundException(id));
+        return pessoaEncontrada;
+    }
 
 }

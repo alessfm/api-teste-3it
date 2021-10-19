@@ -26,7 +26,7 @@ import br.com.api.crud.model.PessoaFisica;
 import br.com.api.crud.service.PessoaFisicaService;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/pessoas")
 public class PessoaFisicaController {
 
 
@@ -49,12 +49,14 @@ public class PessoaFisicaController {
 	@GetMapping("/{id}")
 	@Transactional
 	public PessoaFisicaDto findById(@PathVariable("id") Long pessoaId) {
+		
 		return new PessoaFisicaDto(pessoaFisicaService.findById(pessoaId));
 	}
 	
 	@GetMapping("/{id}/cidade")
 	@Transactional
 	public CidadeDto getCidadeByPessoaId(@PathVariable("id") Long pessoaId) {
+		
 		return new CidadeDto(pessoaFisicaService.getCidadeByPessoaId(pessoaId));
 	}
 

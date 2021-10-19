@@ -1,12 +1,20 @@
 package br.com.api.crud.controller.dto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.br.CPF;
+
 import br.com.api.crud.model.PessoaFisica;
 
 public class PessoaFisicaDto {
 
 	private Long id;
+	@NotBlank
 	private String nome;
+	@CPF @NotBlank
 	private String cpf;
+	@Email @NotBlank
 	private String email;
 	private CidadeDto cidade;
 	private EstadoDto estado;
