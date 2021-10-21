@@ -12,11 +12,6 @@
   <meta name="description" content="Desafio">
 
   <meta name="keywords" content="desafio">
-
-  <link rel="stylesheet" 
-  href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
-  integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
-  crossorigin="anonymous">
   
   <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" 
   rel="stylesheet">
@@ -98,7 +93,8 @@
                   <td><button class="bg-green-500 hover:bg-green-400 text-white font-bold py-1 px-1 
                     border-b-4 border-green-700 hover:border-green-500 rounded">Editar</button></td>
                   <td><button class="bg-red-500 hover:bg-red-400 text-white font-bold py-1 px-1 
-                    border-b-4 border-red-700 hover:border-red-500 rounded">Excluir</button></td>
+                    border-b-4 border-red-700 hover:border-red-500 rounded" 
+                    (click)="delPeople()">Excluir</button></td>
                 </tr>
               </tbody>
             </table>
@@ -121,14 +117,14 @@
       <label class="py-2 flex flex-wrap" id="three" for="email">Email</label>
       <input class="bg-gray-100" type="email" name="email" id="email" required/>
       
-      <select class="bg-gray-100 py-2 flex flex-wrap" name="estado">
-        <option *ngFor="let cidade of cidades" selected="Cidade"
-         value="city">{{cidade.nome}}</option>
-      </select>
-      
       <select class=" bg-gray-100 py-2 flex flex-wrap" name="estado">
         <option *ngFor="let estado of estados" selected="Estado" 
         value="state">{{estado.uf}}</option>
+      </select>
+      
+      <select class="bg-gray-100 py-2 flex flex-wrap" name="estado">
+        <option *ngFor="let cidade of cidades" selected="Cidade"
+         value="city">{{cidade.nome}}</option>
       </select>
       
       <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-1 px-3 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormService } from './form.service';
 import { Pessoas } from '../pessoa-fisica.module'
 import { Cidades } from '../cidade.module'
@@ -13,19 +14,28 @@ export class PessoaFisicaComponent implements OnInit {
   cidades: Cidades[]
   estados: Estados[]
   
-  constructor(private getAllPeopleService: FormService) { }
+  constructor(private getAllPeopleService: FormService, private router:Router) { }
+  estadoID = null
 
-  ngOnInit() {
+  ngOnInit(){
     this.getAllPeopleService.getPeople().subscribe(pessoas =>{
       this.pessoas = pessoas
     })
-    this.getAllPeopleService.getCities().subscribe(cidades =>{
-      this.cidades = cidades
-      console.log(this.cidades)
-    })
     this.getAllPeopleService.getStates().subscribe(estados =>{
       this.estados = estados
+      this.estadoID = this.estados[1]['id']
+      console.log(this.estadoID)
+      this.getAllPeopleService.getCities(this.estados[6]['uf']).subscribe(cidades =>{
+        this.cidades = cidades
+      })
     })
   } 
+
+  delPeople(){
+    this.getAllPeopleService.removePeople(this.pessoas[0]['id']).subscribe(_ =>{
+    alert('Pessoa excluída');
+    window.location.reload();
+    })
+  }
 
 }

@@ -16,11 +16,15 @@ export class FormService {
     return this.http.get<Pessoas[]>('http://localhost:8080/pessoas')
   }
 
-  getCities():Observable<Cidades[]>{
-    return this.http.get<Cidades[]>('http://localhost:8080/municipios')
-  }
-
   getStates():Observable<Estados[]>{
     return this.http.get<Estados[]>('http://localhost:8080/estados')
+  }
+  
+  getCities(uf:string):Observable<Cidades[]>{
+    return this.http.get<Cidades[]>(`http://localhost:8080/municipios/uf/${uf}`)
+  }
+
+  removePeople(id:string):Observable<Pessoas[]>{
+    return this.http.delete<Pessoas[]>(`http://localhost:8080/pessoas/${id}`)
   }
 }
