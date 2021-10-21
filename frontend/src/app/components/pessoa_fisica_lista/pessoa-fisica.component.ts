@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormService } from './form.service';
-import { Pessoas } from './pessoa-fisica.module'
+import { Pessoas } from '../pessoa-fisica.module'
 
 @Component({
   selector: 'app-pessoa-fisica',

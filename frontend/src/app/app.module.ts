@@ -11,7 +11,7 @@ import { FormService } from './components/pessoa_fisica_lista/form.service';
 @NgModule({
   declarations: [
     AppComponent,
-    PessoaFisicaComponent,
+    PessoaFisicaComponent
   ],
   imports: [
     BrowserModule,
