@@ -1,6 +1,6 @@
 # Teste Front-End - 3IT
 
-<a href="http://localhost:8080/swagger-ui/index.html"><strong>Dcocumentação »</strong></a>
+<a href="http://localhost:8080/swagger-ui/index.html"><strong>Documentação »</strong></a>
 
 ## Preview
 
