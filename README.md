@@ -11,10 +11,10 @@
 ### Requisitos: [Node.js 8.11.3](https://nodejs.org/) e Angular Core 7.3v
 
 - [x] Lista de pessoas cadastradas
-- [ ] Cadastrar nova pessoa com os campos Nome, CPF, Email, Estado, Cidade
+- [ ] Cadastrar nova pessoa com os campos Nome, CPF, Email, Estado, Cidade (em andamento)
   - [x] Os campos Estado e Cidade deverão ser listados do banco
-- [ ] Editar os cadastros
-- [ ] Excluir os cadastros
+- [ ] Editar os cadastros (em andamento)
+- [x] Excluir os cadastros
 
 ## API
 
