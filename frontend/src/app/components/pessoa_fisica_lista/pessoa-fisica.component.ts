@@ -15,7 +15,7 @@ export class PessoaFisicaComponent implements OnInit {
   estados: Estados[]
   
   constructor(private getAllPeopleService: FormService, private router:Router) { }
-  estadoID = null
+  // estadoID = null
 
   ngOnInit(){
     this.getAllPeopleService.getPeople().subscribe(pessoas =>{
@@ -23,9 +23,9 @@ export class PessoaFisicaComponent implements OnInit {
     })
     this.getAllPeopleService.getStates().subscribe(estados =>{
       this.estados = estados
-      this.estadoID = this.estados[1]['id']
-      console.log(this.estadoID)
-      this.getAllPeopleService.getCities(this.estados[6]['uf']).subscribe(cidades =>{
+      // this.estadoID = this.estados[1]['id']
+      // console.log(this.estadoID )
+      this.getAllPeopleService.getCities().subscribe(cidades =>{
         this.cidades = cidades
       })
     })
@@ -36,6 +36,12 @@ export class PessoaFisicaComponent implements OnInit {
     alert('Pessoa excluída');
     window.location.reload();
     })
+
+  // addPeople(){
+  //   this.getAllPeopleService.adicionePeople(this.pessoas).subscribe(_ =>{
+  //   alert('Pessoa adicionada');
+  //   window.location.reload();
+  //   })
   }
 
 }
