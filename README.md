@@ -3,7 +3,7 @@ Criar uma aplicação com Angular e integrar com a API.
 
 ## Preview
 
-<img src="print.png" alt="Preview">
+<img src="print.png" alt="Preview do Projeto">
 
 ### Requisitos: 
 - [Node.js 8.11.3](https://nodejs.org/)
