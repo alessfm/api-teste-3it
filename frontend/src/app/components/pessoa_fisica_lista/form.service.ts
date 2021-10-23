@@ -20,11 +20,15 @@ export class FormService {
     return this.http.get<Estados[]>('http://localhost:8080/estados')
   }
   
-  getCities(uf:string):Observable<Cidades[]>{
-    return this.http.get<Cidades[]>(`http://localhost:8080/municipios/uf/${uf}`)
+  getCities():Observable<Cidades[]>{
+    return this.http.get<Cidades[]>('http://localhost:8080/municipios')
   }
 
   removePeople(id:string):Observable<Pessoas[]>{
     return this.http.delete<Pessoas[]>(`http://localhost:8080/pessoas/${id}`)
   }
+
+  // addPeople():Observable<Pessoas[]>{
+  //   return this.http.post<Pessoas[]>(url:'http://localhost:8080/pessoas', body, { headers: httpHeaders })
+  // }
 }
